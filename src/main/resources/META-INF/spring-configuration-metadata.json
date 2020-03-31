@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "Lock-Thanos",
+      "type": "com.kakuiwong.lockthanos",
+      "sourceType": "com.kakuiwong.lockthanos"
+    }
+  ],
+  "properties": [
+    {
+      "name": "lock.thanos.address",
+      "type": "java.lang.String",
+      "description": "127.0.0.1:6379 Clusters are separated by commas"
+    },
+    {
+      "name": "lock.thanos.password",
+      "type": "java.lang.String",
+      "description": "redis password"
+    },
+    {
+      "name": "lock.thanos.database",
+      "type": "java.lang.Integer",
+      "description": "default 2"
+    },
+    {
+      "name": "lock.thanos.tryLockTime",
+      "type": "java.lang.Long",
+      "description": "Lock timeout default 30s"
+    },
+    {
+      "name": "lock.thanos.autoUnlockTime",
+      "type": "java.lang.Long",
+      "description": "Auto unlock time default 60s"
+    },
+    {
+      "name": "lock.thanos.timeUnit",
+      "type": "java.util.concurrent.TimeUnit",
+      "description": "default SECONDS"
+    },
+    {
+      "name": "lock.thanos.lockExceptionHandler",
+      "type": "java.lang.Class",
+      "description": "Do nothing by default"
+    }
+  ],
+  "hints": []
+}
