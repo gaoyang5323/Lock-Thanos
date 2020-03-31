@@ -8,21 +8,17 @@ import org.redisson.api.RedissonClient;
  * @author gaoyang
  * @email 785175323@qq.com
  */
-public class DefaultLock implements ThanosLockI {
+public class NonFairLock implements ThanosLockI {
 
     private RedissonClient redissonClient;
 
-    public DefaultLock(RedissonClient redissonClient) {
+    public NonFairLock(RedissonClient redissonClient) {
         this.redissonClient = redissonClient;
     }
 
     @Override
     public boolean lock(LockParam param) {
-        try {
-            return defaultLock(redissonClient.getLock(param.getLockName()), param);
-        } catch (InterruptedException e) {
-            return false;
-        }
+        return defaultLock(redissonClient.getLock(param.getLockName()), param);
     }
 
     @Override

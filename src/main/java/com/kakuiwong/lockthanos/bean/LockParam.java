@@ -1,5 +1,7 @@
 package com.kakuiwong.lockthanos.bean;
 
+import com.kakuiwong.lockthanos.exception.LockExceptionHandler;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,6 +15,24 @@ public class LockParam {
     private long autoUnlockTime;
     private TimeUnit timeUnit;
     private LockTypeEnum type;
+    private LockExceptionHandler lockExceptionHandler;
+
+    public LockParam(String lockName, long tryLockTime, long autoUnlockTime, TimeUnit timeUnit, LockTypeEnum type, LockExceptionHandler lockExceptionHandler) {
+        this.lockName = lockName;
+        this.tryLockTime = tryLockTime;
+        this.autoUnlockTime = autoUnlockTime;
+        this.timeUnit = timeUnit;
+        this.type = type;
+        this.lockExceptionHandler = lockExceptionHandler;
+    }
+
+    public LockExceptionHandler getLockExceptionHandler() {
+        return lockExceptionHandler;
+    }
+
+    public void setLockExceptionHandler(LockExceptionHandler lockExceptionHandler) {
+        this.lockExceptionHandler = lockExceptionHandler;
+    }
 
     public String getLockName() {
         return lockName;

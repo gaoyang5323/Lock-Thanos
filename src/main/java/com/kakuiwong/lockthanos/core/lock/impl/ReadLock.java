@@ -19,12 +19,8 @@ public class ReadLock implements ThanosLockI {
 
     @Override
     public boolean lock(LockParam param) {
-        try {
             RReadWriteLock lock = redissonClient.getReadWriteLock(param.getLockName());
             return defaultLock(lock.readLock(), param);
-        } catch (InterruptedException e) {
-            return false;
-        }
     }
 
     @Override

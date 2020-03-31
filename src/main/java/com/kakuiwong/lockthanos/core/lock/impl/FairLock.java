@@ -18,11 +18,7 @@ public class FairLock implements ThanosLockI {
 
     @Override
     public boolean lock(LockParam param) {
-        try {
             return defaultLock(redissonClient.getFairLock(param.getLockName()), param);
-        } catch (InterruptedException e) {
-            return false;
-        }
     }
 
     @Override

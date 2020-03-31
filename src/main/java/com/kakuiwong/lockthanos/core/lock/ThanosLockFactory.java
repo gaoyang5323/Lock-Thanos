@@ -2,8 +2,8 @@ package com.kakuiwong.lockthanos.core.lock;
 
 import com.kakuiwong.lockthanos.annotation.LockThanos;
 import com.kakuiwong.lockthanos.bean.LockTypeEnum;
-import com.kakuiwong.lockthanos.core.lock.impl.DefaultLock;
 import com.kakuiwong.lockthanos.core.lock.impl.FairLock;
+import com.kakuiwong.lockthanos.core.lock.impl.NonFairLock;
 import com.kakuiwong.lockthanos.core.lock.impl.ReadLock;
 import com.kakuiwong.lockthanos.core.lock.impl.WriteLock;
 import org.redisson.api.RedissonClient;
@@ -24,8 +24,8 @@ public class ThanosLockFactory {
 
     @PostConstruct
     public void init() {
-        locks[LockTypeEnum.DEFAULT.idx()] = new DefaultLock(redissonClient);
         locks[LockTypeEnum.FAIRLOCK.idx()] = new FairLock(redissonClient);
+        locks[LockTypeEnum.NONFAIRLOCK.idx()] = new NonFairLock(redissonClient);
         locks[LockTypeEnum.READLOCK.idx()] = new ReadLock(redissonClient);
         locks[LockTypeEnum.WRITELOCK.idx()] = new WriteLock(redissonClient);
     }

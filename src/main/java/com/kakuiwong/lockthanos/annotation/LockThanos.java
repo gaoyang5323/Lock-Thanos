@@ -23,19 +23,19 @@ public @interface LockThanos {
     String lockName() default "";
 
     /**
-     * @return 加锁key
+     * @return spel加锁key
      */
     String[] key() default "";
 
     /**
      * @return 尝试加锁超时时间
      */
-    int tryLockTime() default -1;
+    long tryLockTime() default 30;
 
     /**
      * @return 自动解锁时间
      */
-    int autoUnlockTime() default -1;
+    long autoUnlockTime() default 60;
 
     /**
      * @return 时间单位
@@ -45,7 +45,7 @@ public @interface LockThanos {
     /**
      * @return 锁类别
      */
-    LockTypeEnum type() default LockTypeEnum.DEFAULT;
+    LockTypeEnum type() default LockTypeEnum.FAIRLOCK;
 
     /**
      * @return 锁异常处理类
