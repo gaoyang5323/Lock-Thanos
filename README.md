@@ -42,18 +42,17 @@ lock.thanos.order=0 #aop order
 
 4 Custom exception handling:
 ```
-//实现LockExceptionHandler Interface, default is to do nothing
+//Implementation LockExceptionHandler Interface
 static class LockExceptionHandlerDemo implements LockExceptionHandler {
-
-        @Override
-        public Object lockFailHandle(ProceedingJoinPoint joinPoint, ThanosLockI lock, LockParam lockParam) throws Throwable {
-            System.out.println("lockFailHandle");
-            return joinPoint.proceed();
-        }
-
-        @Override
-        public void unLockFailHandle(ProceedingJoinPoint joinPoint, ThanosLockI lock, LockParam lockParam) {
-            System.out.println("unLockFailHandle");
-        }
+        
+          @Override
+          public Object lockFailHandle(ExceptionHandlerParam param) throws Throwable {
+              return param.invoke();
+          }
+        
+          @Override
+          public void unLockFailHandle(ExceptionHandlerParam param) {
+              //default is to do nothing
+          }
     }
 ```

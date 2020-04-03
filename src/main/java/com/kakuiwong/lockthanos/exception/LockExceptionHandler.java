@@ -1,8 +1,7 @@
 package com.kakuiwong.lockthanos.exception;
 
-import com.kakuiwong.lockthanos.bean.LockParam;
-import com.kakuiwong.lockthanos.core.lock.ThanosLockI;
-import org.aspectj.lang.ProceedingJoinPoint;
+
+import com.kakuiwong.lockthanos.bean.ExceptionHandlerParam;
 
 /**
  * @author gaoyang
@@ -10,19 +9,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
  */
 public interface LockExceptionHandler {
 
-    /**
-     * @param joinPoint 切面信息
-     * @param lock      当前redis锁
-     * @param lockParam 锁信息
-     * @return 返回执行结果
-     * @throws Throwable
-     */
-    Object lockFailHandle(ProceedingJoinPoint joinPoint, ThanosLockI lock, LockParam lockParam) throws Throwable;
+    Object lockFailHandle(ExceptionHandlerParam param) throws Throwable;
 
-    /**
-     * @param joinPoint 切面信息
-     * @param lock      当前redis锁
-     * @param lockParam 锁信息
-     */
-    void unLockFailHandle(ProceedingJoinPoint joinPoint, ThanosLockI lock, LockParam lockParam);
+    void unLockFailHandle(ExceptionHandlerParam param);
 }
