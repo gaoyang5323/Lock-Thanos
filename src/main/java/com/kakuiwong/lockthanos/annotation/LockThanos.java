@@ -3,6 +3,7 @@ package com.kakuiwong.lockthanos.annotation;
 import com.kakuiwong.lockthanos.bean.LockTypeEnum;
 import com.kakuiwong.lockthanos.exception.LockExceptionHandler;
 import com.kakuiwong.lockthanos.exception.impl.LockExceptionHandlerDefault;
+import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
@@ -17,9 +18,13 @@ import java.util.concurrent.TimeUnit;
 @Inherited
 public @interface LockThanos {
 
+    @AliasFor("lockName")
+    String value() default "";
+
     /**
      * @return 锁名称
      */
+    @AliasFor("value")
     String lockName() default "";
 
     /**
